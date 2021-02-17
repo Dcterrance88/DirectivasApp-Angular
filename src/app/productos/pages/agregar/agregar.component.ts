@@ -9,6 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AgregarComponent {
 
+  public texto1: string = 'Tio Terrance'
+  public color: string = 'red'
+
   public miFormulario: FormGroup = this.fb.group({
     nombre: ['', Validators.required ]
   });
@@ -17,6 +20,15 @@ export class AgregarComponent {
 
   public tieneError(campo : string): boolean {
     return this.miFormulario.get(campo)?.invalid || false;
+  }
+
+  public cambiarNombre(){
+    this.texto1 = Math.random().toString();
+  }
+
+  public cambiarColor() {
+    const color = "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
+    this.color = color;
   }
 
 }
